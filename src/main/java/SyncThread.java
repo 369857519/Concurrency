@@ -15,6 +15,7 @@ class SyncThread implements Runnable {
 				synchronized(类.class) {}
 				修饰静态方法
 		 */
+		//加锁的本质就是在对象头中写入当前线程ID
 		SyncThread syncThread = new SyncThread();
 //		Thread A_thread1 = new Thread(syncThread, "A_thread1");
 //		Thread A_thread2 = new Thread(syncThread, "A_thread2");
