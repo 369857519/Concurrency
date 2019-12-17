@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class NumberMachine implements Runnable {
 
-	public static int NUM = 50;
+	public static int NUM = 500;
 
 	private static int index = 0;
 
@@ -26,9 +26,10 @@ public class NumberMachine implements Runnable {
 		Thread thread2 = new Thread(new NumberMachine());
 		Thread thread3 = new Thread(new NumberMachine());
 		Thread thread4 = new Thread(new NumberMachine());
-		thread1.start();
-		thread2.start();
 		thread3.start();
 		thread4.start();
+		thread1.start();
+		thread2.start();
+
 	}
 }
