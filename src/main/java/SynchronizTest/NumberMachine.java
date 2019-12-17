@@ -1,7 +1,6 @@
 package SynchronizTest;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class NumberMachine implements Runnable {
 
@@ -9,14 +8,15 @@ public class NumberMachine implements Runnable {
 
 	private static int index = 0;
 
-	private static List<Integer> record = new ArrayList<>();
+	private static Object lock = new Object();
 
 	@Override
 	public void run() {
-		synchronized (this) {
-			while (index <= NUM) {
-				record.add(index);
-				System.out.println(Thread.currentThread().getName() + ":" + index++);
+		while (index <= NUM) {
+			synchronized (lock) {
+				if(index<=NUM){
+					System.out.println(Thread.currentThread().getName() + ":" + index++);
+				}
 			}
 		}
 	}
@@ -30,12 +30,5 @@ public class NumberMachine implements Runnable {
 		thread2.start();
 		thread3.start();
 		thread4.start();
-		thread1.join();
-		thread2.join();
-		thread3.join();
-		thread4.join();
-		for (int i = 0; i < record.size(); i++) {
-			System.out.println("record finished" + record.get(i));
-		}
 	}
 }
