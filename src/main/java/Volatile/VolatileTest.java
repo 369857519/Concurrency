@@ -2,6 +2,7 @@ package Volatile;
 
 import java.util.concurrent.TimeUnit;
 
+//保证可见性和禁止重排序
 public class VolatileTest {
 
 	public static int index = 0;
